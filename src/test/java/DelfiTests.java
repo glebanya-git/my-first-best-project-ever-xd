@@ -53,14 +53,14 @@ public class DelfiTests {
         System.out.println(articles.isEmpty());
         System.out.println(articles.get(5).getText());
 
-        //--------------------------for----------------------------------   i - index
-        //counter start---------till------------step--   (i++ -> i = i + 1) - inkrement/dobavljaem cto libo
-//        for (int i = 0; i < articles.size(); i++) {
-//            if (articles.get(i).getText().startsWith(articleToOpen)) {
-//                articles.get(i).click();
-//                break;
-//            }
-//        }
+//        --------------------------for----------------------------------   i - index
+//        counter start---------till------------step--   (i++ -> i = i + 1) - inkrement/dobavljaem cto libo
+        for (int i = 0; i < articles.size(); i++) {
+            if (articles.get(i).getText().startsWith(articleToOpen)) {
+                articles.get(i).click();
+                break;
+            }
+        }
 
         //-------------------------foreach-------------------------------
         for (WebElement we: articles) {

@@ -15,6 +15,7 @@ public class Testi {
     @Test
 
     public void homeworkTvnet() {
+
         String aritcleToOpen = "Gaiļezera feldšerei nav taisnība – vakcīnas ir pārbaudītas un maskas nenogalina";
 
         System.setProperty("webdriver.chrome.driver", "C://Users/glebsj/Downloads/chromedriver.exe");
@@ -26,6 +27,8 @@ public class Testi {
 
         for (int i = 0; i < articles.size(); i++) {
             System.out.println(i + " " + articles.get(i).getText());
-        }
+
+
         }
     }
+}
