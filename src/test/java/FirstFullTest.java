@@ -38,8 +38,8 @@ public class FirstFullTest {
        WebElement acceptBtn = driver.findElement(ACCEPT_COOKIE_BTN);
        acceptBtn.click();
 
-       LOGGER.info("Taking 3rd article");
-       WebElement currentArticle = driver.findElements(ARTICLE).get(3);
+       LOGGER.info("Taking 3rd or other necessary article");
+       WebElement currentArticle = driver.findElements(ARTICLE).get(6);
 
        LOGGER.info("Finding and storing title");
        String titleToCheck = currentArticle.findElement(ARTICLE_TITLE).getText();
