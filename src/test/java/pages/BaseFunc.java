@@ -10,19 +10,20 @@ import sun.rmi.runtime.Log;
 
 import java.time.Clock;
 import java.util.List;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class BaseFunc {
-   // private final Logger LOGGER = LogManager.getLogger(this.getClass());
+
+    private final Logger LOGGER = LogManager.getLogger(this.getClass());
     private WebDriver driver;
     private WebDriverWait wait;
 
     public BaseFunc () {
-   //     LOGGER.info("Setting webdriver path");
+        LOGGER.info("Setting webdriver path");
         System.setProperty("webdriver.chrome.driver", "C://Users/glebsj/Downloads/chromedriver.exe");
 
-    //    LOGGER.info("Opening browser windows");
+        LOGGER.info("Opening browser windows");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
 
@@ -30,7 +31,7 @@ public class BaseFunc {
     }
 
     public void openUrl(String url) {
-   //     LOGGER.info("Openning " + url + "web page");
+        LOGGER.info("Openning " + url + "web page");
         driver.get(url);
     }
 
@@ -45,7 +46,7 @@ public class BaseFunc {
     }
 
     public List<WebElement> findElements(By locator) {
-       // LOGGER.info("Getting all elements by: " + locator);
+        LOGGER.info("Getting all elements by: " + locator);
         return driver.findElements(locator);
 
     }
