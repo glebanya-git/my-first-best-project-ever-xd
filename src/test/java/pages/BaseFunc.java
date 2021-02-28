@@ -6,11 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import sun.rmi.runtime.Log;
 
 import java.time.Clock;
 import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +22,7 @@ public class BaseFunc {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    public BaseFunc () {
+    public BaseFunc() {
         LOGGER.info("Setting webdriver path");
         System.setProperty("webdriver.chrome.driver", "C://Users/glebsj/Downloads/chromedriver.exe");
 
@@ -33,6 +35,19 @@ public class BaseFunc {
 
     public void openUrl(String url) {
         LOGGER.info("Openning " + url + "web page");
+
+        // !true = fale ; !false = true
+        // || -> or
+        // && -> and
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            url = "http://" + url;
+        }
+
+//        if (url.startsWith("http://") || url.startsWith("https://")) {
+//        } else {
+//            url = "http://" + url;
+//        }
+
         driver.get(url);
     }
 
@@ -52,12 +67,12 @@ public class BaseFunc {
 
     }
 
-    public String getText(By locator){
+    public String getText(By locator) {
         LOGGER.info("Getting text of element by locator: " + locator);
         return findElement(locator).getText();
     }
 
-    public String getText(By locator, int id){
+    public String getText(By locator, int id) {
         LOGGER.info("Getting text of element Nr. " + id + "by locator: " + locator);
         List<WebElement> elements = findElements(locator);
 
@@ -67,10 +82,26 @@ public class BaseFunc {
 
     }
 
-    public WebElement findElement(By locator){
+    public WebElement findElement(By locator) {
         LOGGER.info("Trying to find element by locator: " + locator);
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         return driver.findElement(locator);
 
+    }
+
+    public void type(By locator, String text) {
+        WebElement inputField = findElement(locator);
+        inputField.clear();
+        inputField.sendKeys(text);
+    }
+
+    public void select(By locator, String value) {
+        Select select = new Select(findElement(locator));
+        select.selectByValue(value);
+
+    }
+
+    public void closeBrowser() {
+        driver.close();
     }
 }
