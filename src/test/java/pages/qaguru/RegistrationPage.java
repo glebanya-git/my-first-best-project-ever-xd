@@ -17,7 +17,7 @@ public class RegistrationPage {
     private final By DISCOUNT = By.id("discount");
     private final By COMMENT = By.id("comment");
     private final By ACCEPT_CB = By.id("dataProc");
-    private final By REGISTER_BTN = By.id(".//input[@type = 'submit']");
+    private final By REGISTER_BTN = By.xpath(".//input[@type = 'submit']");
 
     private BaseFunc baseFunc;
 

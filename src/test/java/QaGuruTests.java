@@ -48,6 +48,7 @@ public class QaGuruTests {
         Assertions.assertEquals(SUCCESS_TXT, successPage.getSUCCESS_TXT(), "Problems with success msg");
 
     }
+
 @AfterEach
 public void closeBrowser() {
     baseFunc.closeBrowser();
